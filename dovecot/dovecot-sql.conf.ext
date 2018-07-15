@@ -1,0 +1,5 @@
+driver = mysql
+connect = host=127.0.0.1 dbname=dovecot user=root password=
+default_pass_scheme = SHA512-CRYPT
+password_query = SELECT user, password FROM users WHERE user='%u';
+#iterate_query = SELECT user FROM users;
