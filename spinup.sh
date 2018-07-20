@@ -12,7 +12,7 @@ yum install -y nginx
 chkconfig httpd off
 chkconfig nginx on
 #https://stackoverflow.com/questions/5009324/node-js-nginx-what-now/5015178#5015178
-cp nginx.conf /etc/nginx/nginx.conf
+cp stuff/nginx.conf /etc/nginx/nginx.conf
 service httpd stop
 service nginx restart
 
@@ -37,14 +37,14 @@ chkconfig postfix off
 chkconfig exim on
 chkconfig dovecot on
 openssl req -new -newkey rsa:4096 -x509 -sha256 -days 4242 -nodes -out /etc/ssl/certs/dovecot.crt -keyout /etc/ssl/private/dovecot.key
-yes | cp exim.conf /etc/exim/exim.conf
-yes | cp dovecot/conf.d/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
-yes | cp dovecot/conf.d/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
-yes | cp dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf
-yes | cp dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
-yes | cp dovecot/conf.d/auth-sql.conf.ext /etc/dovecot/conf.d/auth-sql.conf.ext
-yes | cp dovecot/dovecot.conf /etc/dovecot/dovecot.conf
-yes | cp dovecot/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
+yes | cp stuff exim.conf /etc/exim/exim.conf
+yes | cp stuff dovecot/conf.d/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
+yes | cp stuff dovecot/conf.d/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
+yes | cp stuff dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf
+yes | cp stuff dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
+yes | cp stuff dovecot/conf.d/auth-sql.conf.ext /etc/dovecot/conf.d/auth-sql.conf.ext
+yes | cp stuff dovecot/dovecot.conf /etc/dovecot/dovecot.conf
+yes | cp stuff dovecot/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
 mysql -e "CREATE DATABASE dovecot; CREATE TABLE dovecot.users (user varchar(255) NOT NULL PRIMARY KEY, password varchar(255) NOT NULL)"
 # add users with INSERT INTO users SET user='user@domain.com',password=ENCRYPT('password')
 mkdir /var/mail/vhosts/
