@@ -99,8 +99,9 @@ cd /tmp
 wget https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.17.tar.xz
 tar xfJ hicolor-icon-theme-*tar.xz
 cd /hicolor-icon-theme-*
+make clean
 ./autogen.sh
 make install
 
-gtk4-broadwayd -a 127.0.0.1 &
-GDK_BACKEND=broadway BROADWAY_DISPLAY=:0 /tmp/gtk+-3.94.0/_build/demos/gtk-demo/gtk4-demo
+gtk4-broadwayd -a $(hostname -s) &
+GDK_BACKEND=broadway BROADWAY_DISPLAY=:0 /tmp/gtk/_build/demos/gtk-demo/gtk4-demo
